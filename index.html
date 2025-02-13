@@ -3,93 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Feliz San Valentin mi niña hermosa ❤️‍🩹</title>
-    
-    <!-- Estilos y librerías -->
+    <title>Sobre Elegante</title>
     <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css">
     <style>
         body {
             margin: 0;
             padding: 0;
             background: linear-gradient(180deg, rgba(0, 0, 0, 0.5), rgba(180, 0, 180, 0.6));
             font-family: 'Lobster', cursive;
-            color: white;
-            text-align: center;
-            overflow: auto;
-            position: relative;
-            transition: background 0.5s ease-in-out;
-        }
-
-        .container {
-            position: relative;
-            z-index: 2;
-            margin-top: 5%;
-            padding-bottom: 50px;
-        }
-
-        h1 {
-            font-size: 50px;
-            opacity: 0;
-            transform: translateY(-20px);
-            transition: opacity 1.5s ease, transform 1.5s ease;
-            color: #c3bdbd;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7), -1px -1px 4px rgba(255, 255, 255, 0.3);
-        }
-
-        .gallery {
-            width: 100%;
-            margin: 0 auto;
-            padding: 20px 0;
-        }
-
-        .gallery .slick-slide {
             display: flex;
             justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+            text-align: center;
         }
 
-        .gallery img {
-            width: 100%;
-            max-width: 400px;
-            max-height: 350px;
-            object-fit: contain;
-            border-radius: 15px;
-            box-shadow: 0 6px 15px rgba(255, 255, 255, 0.3);
-            transition: transform 0.3s ease-in-out;
-            cursor: pointer;
-        }
-
-        .gallery img:hover {
-            transform: scale(1.05);
-        }
-
-        .gallery .text-container {
-            display: none;
-            padding: 20px;
-            background-color: rgba(0, 0, 0, 0.7);
-            border-radius: 10px;
-            color: white;
-            margin-top: 10px;
-            text-align: justify;
-        }
-
-        .video-section {
-            margin-top: 40px;
-        }
-
-        video {
-            width: 90%;
-            max-width: 600px;
-            border-radius: 15px;
-            box-shadow: 0 6px 15px rgba(255, 255, 255, 0.3);
-            transition: transform 0.3s ease-in-out;
-        }
-
-        video:hover {
-            transform: scale(1.05);
-        }
-
+        /* Canvas para los pétalos animados */
         canvas {
             position: fixed;
             top: 0;
@@ -100,164 +30,122 @@
             z-index: 1;
         }
 
-        .gallery, .video-section {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 1s ease, transform 1s ease;
+        /* Sobre */
+        .envelope {
+            width: 70%;
+            max-width: 450px;
+            height: 250px;
+            background: linear-gradient(135deg, #6f4a8e, #9b6dbf);
+            border-radius: 20px;
+            margin: 0 auto;
+            position: relative;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            cursor: pointer;
+            transform-origin: top center;
+            transition: transform 1s ease, box-shadow 0.3s ease;
+            z-index: 2;
         }
 
-        .gallery.show, .video-section.show {
-            opacity: 1;
-            transform: translateY(0);
+        /* Solapa del sobre */
+        .envelope::before {
+            content: "";
+            position: absolute;
+            top: 10%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80%;
+            height: 50%;
+            background: #9f8fbb;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
         }
 
-        @media (max-width: 768px) {
-            h1 {
-                font-size: 40px;
-            }
-
-            .gallery img {
-                max-height: 300px;
-                width: 90%;
-                margin: 0 auto;
-            }
-
-            video {
-                width: 95%;
-                max-width: none;
-            }
+        /* Detalles de la parte delantera del sobre */
+        .envelope .flap {
+            position: absolute;
+            top: 3%;
+            left: 50%;
+            width: 70%;
+            height: 50%;
+            background: #a890c7;
+            transform: translateX(-50%);
+            border-radius: 15px;
+            box-shadow: 0 8px 12px rgba(0, 0, 0, 0.3), 0 0 30px rgba(255, 255, 255, 0.3);
+            transition: all 0.3s ease;
         }
 
-        @media (max-width: 480px) {
-            h1 {
-                font-size: 30px;
-            }
-
-            .gallery .text-container {
-                font-size: 14px;
-            }
+        /* Sello de cera elegante */
+        .envelope .seal {
+            position: absolute;
+            top: 15%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(240, 145, 176, 1) 0%, rgba(255, 178, 201, 1) 100%);
+            border: 4px solid #f0a1b1;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
-        .play-button {
-            position: fixed;
-    bottom: 20px;
-    left: 25%;
-    padding: 10px 20px;
-    background-color: rgba(255, 255, 255, 0.3); /* Color más suave acorde al fondo */
-    border: none;
-    border-radius: 5px;
-    font-size: 16px;
-    cursor: pointer;
-    z-index: 10;
-    color: white; /* Color del texto */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); /* Sombra para darle más profundidad */
-    transition: background-color 0.3s, transform 0.3s ease;
+        /* Texto de bienvenida más abajo */
+        .welcome-text {
+            font-size: 28px;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            position: absolute;
+            top: 70%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 2;
+            width: 100%;
         }
 
-        .play-button:hover {
-            background-color: #B67AE1;  /* Tono morado más oscuro para el hover */
-            transform: scale(1.05);
+        /* Efecto de apertura */
+        .envelope.opened .flap {
+            transform: translateX(-50%) rotateX(180deg);
         }
 
-        .play-button:active {
-            transform: scale(1);
+        .envelope.opened {
+            transform: scale(1.05) rotateX(90deg);
         }
 
-
+        /* Interacción con el sello */
+        .envelope .seal:hover {
+            transform: scale(1.2);
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.7);
+        }
     </style>
 </head>
 <body>
-    <audio id="backgroundAudio" loop>
-        <source src="CD9 - Peligrosa (Cover Audio).mp3" type="audio/mp3">
-        Tu navegador no soporta el elemento de audio.
-    </audio>
-
+    <!-- Canvas para los pétalos animados -->
     <canvas id="petalCanvas"></canvas>
-    
-    <div class="container">
-        <h1 id="title">Momentos especiales. ❤️‍🩹</h1>
-        
-        <div class="gallery">
-            <div class="photo-item">
-                <img src="Nuestra primera salida.JPG" alt="Foto 1">
-                <div class="text-container">
-                    <p>Esta fue la primera vez que nos pusimos de acuerdo para salir, llevabamos esperando para poder tener una apertura igual e ir al mercadito de navidad, te juro que despues de ese día yo no queria a nadie más que no fueras tu, me senti tan complementado a tu lado, que esa salida la tengo muy marcada <3.</p>
-                </div>
-            </div>
-            <div class="photo-item">
-                <img src="Verte como niña pequeña no tiene precio.JPEG" alt="Foto 2">
-                <div class="text-container">
-                    <p>Ese mismo día del arbolito vimos unos algodones pero fuiste algo necia y no quisiste que ese día te lo comprara y quedamos en ir otro día por el, en el momento en el que te lo entregaron el ver tu cara llena de esa felicidad e inocencia juro que no tuvo ningun tipo de precio, desde ahi supe que queria consentirte con todo lo que estuviera a mi alcance para poder ver esa sonrisa siempre. <3</p>
-                </div>
-            </div>
-            <div class="photo-item">
-                <img src="nuestra primera foto en donde me diste beso.jpg" alt="Foto 3">
-                <div class="text-container">
-                    <p>Recuerdo claramente ese primer beso. Fue un instante único, lleno de emoción y nervios, pero también de una certeza profunda de que algo increíble estaba comenzando. Ese beso marcó el inicio de nuestra historia juntos, y siempre lo recordaré como uno de los momentos más bellos de mi vida.</p>
-                </div>
-            </div>
-            <div class="photo-item">
-                <img src="nuestra primera navidad.jpg" alt="Foto 4">
-                <div class="text-container">
-                    <p>La primera Navidad juntos fue tan especial, realmente yo no me imaginaba pasar ese tipo de fechas fuera de casa a esta edad, al igual que para mi no eran tan agradables esas fechas, pero en el momento que me dijiste que tu mami me habia contemplado para subir fue un momento muy lindo y unico, lo unico que pense fue en que estaba haciendo las cosas tan bien como para ser invitado a una fecha tan especial en tan poco tiempo, ame demasiado esa noche y espero sea la primera de muchas más. </p>
-                </div>
-            </div>
-            <div class="photo-item">
-                <img src="mientras tu observabas arte.JPG" alt="Foto 5">
-                <div class="text-container">
-                    <p>Nuestra primera salida a un museo, mientras observabas las obras de arte, me di cuenta de lo afortunado que soy. Verte tan feliz, tan apasionada por lo que te rodea, me hizo admirarte aún más. Y así, entre cuadros y esculturas, compartimos una tarde llena de conversación y complicidad.</p>
-                </div>
-            </div>
-        </div>
-        
-        <div class="video-section">
-            <h2>Nuestros recuerdos 💝</h2>
-            <video id="video" controls>
-                <source src="yokoo.mp4" type="video/mp4">
-                Tu navegador no soporta el video.
-            </video>
-        </div>
+
+    <!-- Sobre interactivo -->
+    <div class="envelope" onclick="openEnvelope()">
+        <!-- Solapa del sobre -->
+        <div class="flap"></div>
+        <!-- Sello de cera -->
+        <div class="seal"></div>
+        <!-- Texto de bienvenida en la parte baja del sobre -->
+        <div class="welcome-text" id="welcome-text">Feliz San Valentin, corazon 💝</div>
     </div>
-    
-    <button class="play-button" id="playAudioButton">Presiona para escuchar tu canción <3</button>
-    
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+
     <script>
-        gsap.to("#title", { duration: 1.5, opacity: 1, y: -20, ease: "power3.out" });
+        // Función para abrir el sobre
+        function openEnvelope() {
+            document.getElementById("welcome-text").style.display = "none";
+            const envelope = document.querySelector('.envelope');
+            envelope.classList.add('opened');
 
-        $(document).ready(function(){
-            setTimeout(function(){
-                $(".gallery").addClass("show");
-                $(".video-section").addClass("show");
-            }, 500);
+            setTimeout(() => {
+                window.location.href = "mairis.html"; 
+            }, 1000);
+        }
 
-            $('.gallery').slick({
-                slidesToShow: 1,
-                dots: true,
-                infinite: true,
-                speed: 500,
-                fade: true,
-                cssEase: 'linear'
-            });
-
-            $(".photo-item img").click(function() {
-                $(this).next(".text-container").toggle();  // Alterna la visibilidad del texto
-            });
-
-            const audio = document.getElementById("backgroundAudio");
-            const video = document.getElementById("video");
-
-            video.addEventListener('play', function() {
-                audio.pause();  // Detener el audio cuando el video se reproduce
-            });
-
-            video.addEventListener('pause', function() {
-                audio.play();  // Reanudar el audio cuando el video se pausa
-            });
-        });
-
+        // Código para los pétalos animados
         const canvas = document.getElementById("petalCanvas");
         const ctx = canvas.getContext("2d");
         canvas.width = window.innerWidth;
@@ -310,18 +198,6 @@
 
         createPetals();
         animate();
-
-        document.getElementById('playAudioButton').addEventListener('click', function () {
-            const audio = document.getElementById("backgroundAudio");
-
-            if (audio.paused) {
-                audio.play();
-                this.textContent = "Pausar tu canción <3"; // Cambiar el texto a "Pausar"
-            } else {
-                audio.pause();
-                this.textContent = "Presiona para escuchar tu canción <3"; // Cambiar el texto a "Reproducir"
-            }
-        });
     </script>
 </body>
 </html>
