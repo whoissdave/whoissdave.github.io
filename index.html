@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Feliz San Valentin, corazón 💝</title>
+    <title>Sobre Elegante</title>
     <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
     <style>
         body {
@@ -32,7 +32,7 @@
 
         /* Sobre */
         .envelope {
-            width: 70%;
+            width: 80%;
             max-width: 450px;
             height: 250px;
             background: linear-gradient(135deg, #6f4a8e, #9b6dbf);
@@ -117,6 +117,31 @@
             transform: scale(1.2);
             box-shadow: 0 12px 25px rgba(0, 0, 0, 0.7);
         }
+
+        /* Ajustes para dispositivos móviles */
+        @media (max-width: 768px) {
+            .envelope {
+                width: 90%;
+                height: 220px;
+            }
+            .envelope .seal {
+                width: 40px;
+                height: 40px;
+            }
+            .welcome-text {
+                font-size: 24px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .envelope {
+                width: 95%;
+                height: 180px;
+            }
+            .welcome-text {
+                font-size: 20px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -130,7 +155,7 @@
         <!-- Sello de cera -->
         <div class="seal"></div>
         <!-- Texto de bienvenida en la parte baja del sobre -->
-        <div class="welcome-text" id="welcome-text">Feliz San Valentin, corazon 💝</div>
+        <div class="welcome-text" id="welcome-text">Feliz San Valentín, corazón 💝</div>
     </div>
 
     <script>
